@@ -12,6 +12,8 @@ At this point, X11 is looking more and more likely (tho I would rather avoid tha
 
 [x2go](https://wiki.x2go.org/) may be a good alternative
 
+[xrdp](http://xrdp.org/) might be another option??
+
 
 
 
