@@ -46,7 +46,7 @@ VOLUME [$DATA_DIR]
 # App install
 RUN \
   apt-get -q update \
-  && add-apt-repository universe
+  && add-apt-repository universe \
   && apt-get install -qy \
        #[xpra download](https://xpra.org/trac/wiki/Download)
        #[instructions](https://winswitch.org/downloads/debian-repository.html)
