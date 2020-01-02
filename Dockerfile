@@ -4,6 +4,12 @@ FROM ubuntu:latest
 
 USER root
 
+RUN \
+  apt-get -q update \
+  && apt-get install -qy \
+       apt-utils \
+       software-properties-common
+
 ###########################################################################################
 # general settings
 ENV TERM=xterm
@@ -36,20 +42,16 @@ RUN \
 VOLUME [$DATA_DIR]
 
 ###########################################################################################
-# Install prerequisites
-RUN \
-  apt-get -q update \
-  && apt-get install -qy apt-utils \
-                         software-properties-common
-
-###########################################################################################
 ###########################################################################################
 # App install
 RUN \
   apt-get -q update \
+  && add-apt-repository universe
   && apt-get install -qy \
-       #[xpra](https://xpra.org/)
+       #[xpra download](https://xpra.org/trac/wiki/Download)
+       #[instructions](https://winswitch.org/downloads/debian-repository.html)
        xpra
+
 
 ###########################################################################################
 ###########################################################################################
@@ -64,8 +66,8 @@ RUN \
 
 ###########################################################################################
 # startup tasks
-USER $PUSR:$PGID
+#USER $PUSR:$PGID
+#WORKDIR $DATA_DIR
+#CMD $HOME/startup.sh
 
-WORKDIR $DATA_DIR
-
-CMD $HOME/startup.sh
+CMD /bin/sh
