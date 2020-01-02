@@ -47,10 +47,9 @@ RUN \
 # App install
 RUN \
   apt-get -q update \
-  && apt-get install -qy python3 \
-                         python3-pip \
-                         nodejs \
-                         npm
+  && apt-get install -qy \
+       #[xpra](https://xpra.org/)
+       xpra
 
 ###########################################################################################
 ###########################################################################################
