@@ -20,11 +20,11 @@ ENV ENV_UID=$ARG_UID
 ENV ENV_GID=$ARG_GID
 ENV ENV_HOME=/$ARG_USR
 
-ENV TERM=xterm
-
 ###########################################################################################
 ###########################################################################################
 # App install
+ENV TERM=xterm
+
 RUN \
   apt-get -q update \
   && add-apt-repository universe \
