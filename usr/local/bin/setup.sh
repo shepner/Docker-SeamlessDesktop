@@ -5,7 +5,7 @@
 # create the user's group
 groupadd -r -g $ENV_GID $ENV_USR
 # create the user account and home dir
-useradd -r -b / -d $ENV_HOME -m -u $ENV_UID -g $ENV_GID -s /bin/bash $PUSR
+useradd -r -b / -d $ENV_HOME -m -u $ENV_UID -g $ENV_GID -s /bin/bash $ENV_USR
 
 # setup the working directory
 mkdir -p $ENV_WORKDIR
