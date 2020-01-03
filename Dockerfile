@@ -56,9 +56,9 @@ RUN \
 #CMD $HOME/startup.sh
 
 RUN mkdir -p /usr/local/bin
-
 COPY usr/local/bin/*.sh /usr/local/bin/
-RUN chmod 544 /usr/local/bin/configure.sh
-RUN chmod 554 /usr/local/bin/start.sh
+RUN \
+  chmod 544 /usr/local/bin/configure.sh \
+  && chmod 554 /usr/local/bin/start.sh
 
 CMD /bin/sh
