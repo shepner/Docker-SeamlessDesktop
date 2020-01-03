@@ -50,7 +50,8 @@ RUN \
   && apt-get install -qy \
        #[xpra download](https://xpra.org/trac/wiki/Download)
        #[instructions](https://winswitch.org/downloads/debian-repository.html)
-       xpra
+       xpra \
+       firefox
 
 
 ###########################################################################################
