@@ -13,5 +13,5 @@ chown -R $ENV_UID:$ENV_GID $ENV_WORKDIR
 
 # launch the application
 chown $ENV_UID:$ENV_GID /usr/local/bin/startup.sh
-#su docker
+#su $ENV_USR
 #/usr/local/bin/startup.sh
