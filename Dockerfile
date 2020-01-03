@@ -64,4 +64,5 @@ RUN \
   chmod 544 /usr/local/bin/configure.sh \
   && chmod 554 /usr/local/bin/start.sh
 
-CMD /bin/sh
+ENTRYPOINT ["/usr/local/bin/configure.sh"]
+CMD ["-c"]
