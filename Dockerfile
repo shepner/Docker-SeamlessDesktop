@@ -57,10 +57,8 @@ RUN \
 
 RUN mkdir -p /usr/local/bin
 
-COPY usr/local/bin/setup.sh /usr/local/bin/setup.sh
-RUN chmod 554 /usr/local/bin/setup.sh
-
-COPY usr/local/bin/setup.sh /usr/local/bin/startup.sh
+COPY usr/local/bin/*.sh /usr/local/bin/
+RUN chmod 544 /usr/local/bin/setup.sh
 RUN chmod 554 /usr/local/bin/startup.sh
 
 CMD /bin/sh
