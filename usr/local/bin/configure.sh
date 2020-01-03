@@ -12,5 +12,4 @@ mkdir -p $ENV_WORKDIR
 chown -R $ENV_UID:$ENV_GID $ENV_WORKDIR
 
 # launch the application
-chown $ENV_UID:$ENV_GID /usr/local/bin/start.sh
-su $ENV_USR -c /usr/local/bin/start.sh
+/usr/local/bin/start.sh
