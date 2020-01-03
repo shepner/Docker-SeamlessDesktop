@@ -14,7 +14,7 @@ At this point, X11 is looking more and more likely (tho I would rather avoid tha
 
 [xrdp](http://xrdp.org/) might be another option??
 
-
+[xrdp](https://github.com/neutrinolabs/xrdp) prolly wont give this functionality but is an interesting project
 
 
 old stuff:
