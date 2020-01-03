@@ -11,35 +11,16 @@ RUN \
        software-properties-common
 
 ###########################################################################################
-# general settings
+ARG ARG_USR=docker
+ARG ARG_UID=1003
+ARG ARG_GID=1100
+
+ENV ENV_USR=$ARG_USR
+ENV ENV_UID=$ARG_UID
+ENV ENV_GID=$ARG_GID
+ENV ENV_HOME=/$ARG_USR
+
 ENV TERM=xterm
-  
-###########################################################################################
-# user setup
-ENV \
-  PUSR=docker \
-  ARG_PUID=1003 \
-  ARG_PGID=1100
-ENV HOME="/$PUSR"
-
-# set the default values we will use
-ARG PUID=$ARG_PUID
-ARG PGID=$ARG_PGID
-
-# create the group, user, and home dir
-RUN \
-  groupadd -r -g $PGID $PUSR \
-  && useradd -r -b / -d $HOME -m -u $PUID -g $PGID -s /bin/bash $PUSR
-
-###########################################################################################
-# setup the working directory
-ENV DATA_DIR="/data"
-
-RUN \
-  mkdir -p $DATA_DIR \
-  && chown -R $PUID:$PGID $DATA_DIR
-
-VOLUME $DATA_DIR
 
 ###########################################################################################
 ###########################################################################################
@@ -54,6 +35,9 @@ RUN \
        firefox
 
 
+ENV ENV_WORKDIR=/data
+VOLUME $ENV_WORKDIR
+
 ###########################################################################################
 ###########################################################################################
 # installation cleanup
@@ -67,8 +51,16 @@ RUN \
 
 ###########################################################################################
 # startup tasks
-#USER $PUSR:$PGID
-#WORKDIR $DATA_DIR
+#USER $ARG_UID:$ARG_GID
+#WORKDIR $ENV_WORKDIR
 #CMD $HOME/startup.sh
+
+RUN mkdir -p /usr/local/bin
+
+COPY usr/local/bin/setup.sh /usr/local/bin/setup.sh
+RUN chmod 554 /usr/local/bin/setup.sh
+
+COPY usr/local/bin/setup.sh /usr/local/bin/startup.sh
+RUN chmod 554 /usr/local/bin/startup.sh
 
 CMD /bin/sh
